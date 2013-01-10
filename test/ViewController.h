@@ -38,6 +38,9 @@
 - (IBAction)zero:(id)sender;
 - (IBAction)clear:(id)sender;
 - (IBAction)three:(id)sender;
+- (IBAction)asin:(id)sender;
+- (IBAction)acos:(id)sender;
+- (IBAction)atan:(id)sender;
 
 -(int)log_e;
 - (int)plusminus;

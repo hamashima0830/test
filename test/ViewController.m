@@ -45,7 +45,23 @@ double l=0;
     l=n;
 }
 
+- (IBAction)asin:(id)sender {
+    m=(n*360)/2*M_PI;
+    n=asin(m);
+    [[self display] setText:[ NSString stringWithFormat:@"%f",n]];
+}
 
+- (IBAction)acos:(id)sender {
+    m=(n*360)/2*M_PI;
+    n=asin(m);
+    [[self display] setText:[ NSString stringWithFormat:@"%f",n]];
+}
+
+- (IBAction)atan:(id)sender {
+    m=(n*360)/2*M_PI;
+    n=asin(m);
+    [[self display] setText:[ NSString stringWithFormat:@"%f",n]];
+}
 
 
 - (IBAction)tan:(id)sender {
@@ -181,7 +197,7 @@ double l=0;
     
     
 
-    [[self display] setText:[ NSString stringWithFormat:@"%f",n]];
+   
     
 }
 
@@ -193,14 +209,16 @@ double l=0;
     {
         n=1;
     }
-    else if([self state]==ic && n != 0)
-    {
-        n=n*10+1;
-    }
     else if ([self state]==ic)
     {
         n=1;
+        
     }
+    else if( n != 0)
+    {
+        n=n*10+1;
+    }
+    
     
     else
     {
