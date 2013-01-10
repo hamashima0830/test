@@ -48,4 +48,7 @@
 @property enum {plus,hiku,waru,kakeru,ic,ans} state;
 - (IBAction)ans:(id)sender;
 
+- (void)m_out;
+
+
 @end

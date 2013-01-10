@@ -34,11 +34,14 @@ double m=0;
 double l=0;
 
 
-
+- (void)m_out
+{
+    [label setText:[ NSString stringWithFormat:@"%f",n]];
+}
 
 - (IBAction)m_out:(id)sender {
     n=l;
-    [[self display] setText:[ NSString stringWithFormat:@"%f",n]];
+    [self m_out];
 }
 
 - (IBAction)m_set:(id)sender {
