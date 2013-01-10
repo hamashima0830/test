@@ -8,6 +8,41 @@
 
 #import <UIKit/UIKit.h>
 
+#import <math.h>
+
 @interface ViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UILabel *display;
+- (IBAction)plusminus:(id)sender;
+- (IBAction)log_e:(id)sender;
+- (IBAction)log_10:(id)sender;
+- (IBAction)pi:(id)sender;
+- (IBAction)tan:(id)sender;
+- (IBAction)neipia:(id)sender;
+- (IBAction)sqrt:(id)sender;
+- (IBAction)m_out:(id)sender;
+- (IBAction)m_set:(id)sender;
+- (IBAction)waru:(id)sender;
+- (IBAction)kakeru:(id)sender;
+- (IBAction)hiku:(id)sender;
+- (IBAction)sin:(id)sender;
+- (IBAction)cos:(id)sender;
+- (IBAction)plus:(id)sender;
+- (IBAction)four:(id)sender;
+- (IBAction)five:(id)sender;
+- (IBAction)six:(id)sender;
+- (IBAction)seven:(id)sender;
+- (IBAction)eight:(id)sender;
+- (IBAction)nine:(id)sender;
+- (IBAction)two:(id)sender;
+- (IBAction)one:(id)sender;
+- (IBAction)zero:(id)sender;
+- (IBAction)clear:(id)sender;
+- (IBAction)three:(id)sender;
+
+-(int)log_e;
+- (int)plusminus;
+
+@property enum {plus,hiku,waru,kakeru,ic,ans} state;
+- (IBAction)ans:(id)sender;
 
 @end
