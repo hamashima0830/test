@@ -24,6 +24,7 @@
 		E97E34DF162D3724000AEA52 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E97E34B7162D3723000AEA52 /* Foundation.framework */; };
 		E97E34E7162D3724000AEA52 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E97E34E5162D3724000AEA52 /* InfoPlist.strings */; };
 		E97E34EA162D3724000AEA52 /* testTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E97E34E9162D3724000AEA52 /* testTests.m */; };
+		E9EEF3BE16A7B60D00F99308 /* statemachine.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EEF3BD16A7B60D00F99308 /* statemachine.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		E97E34E6162D3724000AEA52 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E97E34E8162D3724000AEA52 /* testTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = testTests.h; sourceTree = "<group>"; };
 		E97E34E9162D3724000AEA52 /* testTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = testTests.m; sourceTree = "<group>"; };
+		E9EEF3BC16A7B60D00F99308 /* statemachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = statemachine.h; path = ../statemachine.h; sourceTree = "<group>"; };
+		E9EEF3BD16A7B60D00F99308 /* statemachine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = statemachine.m; path = ../statemachine.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,7 +122,9 @@
 		E97E34BB162D3723000AEA52 /* test */ = {
 			isa = PBXGroup;
 			children = (
+				E9EEF3BC16A7B60D00F99308 /* statemachine.h */,
 				E97E34C4162D3723000AEA52 /* AppDelegate.h */,
+				E9EEF3BD16A7B60D00F99308 /* statemachine.m */,
 				E97E34C5162D3723000AEA52 /* AppDelegate.m */,
 				E97E34CD162D3724000AEA52 /* MainStoryboard_iPhone.storyboard */,
 				E97E34D0162D3724000AEA52 /* MainStoryboard_iPad.storyboard */,
@@ -277,6 +282,7 @@
 				E97E34C2162D3723000AEA52 /* main.m in Sources */,
 				E97E34C6162D3723000AEA52 /* AppDelegate.m in Sources */,
 				E97E34D5162D3724000AEA52 /* ViewController.m in Sources */,
+				E9EEF3BE16A7B60D00F99308 /* statemachine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,6 +466,7 @@
 				E97E34EF162D3725000AEA52 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E97E34F0162D3725000AEA52 /* Build configuration list for PBXNativeTarget "testTests" */ = {
 			isa = XCConfigurationList;
@@ -468,6 +475,7 @@
 				E97E34F2162D3725000AEA52 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

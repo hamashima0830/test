@@ -79,6 +79,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="small:" destination="2" eventType="touchUpInside" id="IpO-dx-BRB"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bp1-5g-sCF">
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -633,6 +636,7 @@
                 <relationship kind="action" name="seven:"/>
                 <relationship kind="action" name="sin:"/>
                 <relationship kind="action" name="six:"/>
+                <relationship kind="action" name="small:"/>
                 <relationship kind="action" name="sqrt:"/>
                 <relationship kind="action" name="tan:"/>
                 <relationship kind="action" name="three:"/>

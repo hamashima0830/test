@@ -16,6 +16,8 @@
 
 @implementation ViewController
 
+//@synthesize statemachine;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -32,16 +34,13 @@
 double n=0;
 double m=0;
 double l=0;
+double p=0;
 
-
-- (void)m_out
-{
-    [label setText:[ NSString stringWithFormat:@"%f",n]];
-}
+//メモリの入力m_setと出力m_out
 
 - (IBAction)m_out:(id)sender {
     n=l;
-    [self m_out];
+    [[self display] setText:[ NSString stringWithFormat:@"%f",n]];
 }
 
 - (IBAction)m_set:(id)sender {
@@ -75,33 +74,50 @@ double l=0;
 
 
 - (IBAction)cos:(id)sender {
-    m=(n/360)*2*M_PI;
-    n=cos(m);
+    
+    n=[self cos];
     [[self display] setText:[ NSString stringWithFormat:@"%f",n]];
 }
+- (double)cos
+{
+    m=(n/360)*2*M_PI;
+    return cos(m);
+}
+
 
 - (IBAction)sin:(id)sender {
-    m=(n/360)*2*M_PI;
     
-    n=sin(m);
+    
+    n=[self sin];
     [[self display] setText:[ NSString stringWithFormat:@"%f",n]];
     
 }
 
+- (double)sin
+{
+    m=(n/360)*2*M_PI;
+    return sin(m);
+}
 
 
-
-- (int)plusminus {
+- (double)plusminus
+{
     return 0-n;
 }
+
 
 - (IBAction)plusminus:(id)sender {
     n=[self plusminus];
     [[self display] setText:[ NSString stringWithFormat:@"%g",n]];
 }
--(int)log_e{
-    return log(n);
+
+- (IBAction)small:(id)sender;
+{
+    [self setState:small];
+    p++;
 }
+
+
 
 
 - (IBAction)log_e:(id)sender {
@@ -109,30 +125,52 @@ double l=0;
     [[self display] setText:[ NSString stringWithFormat:@"%f",n]];
 }
 
-- (int)log_10
-{
-    return log10(n);
-}
+
 
 - (IBAction)log_10:(id)sender {
     n=[self log_10];
     [[self display] setText:[ NSString stringWithFormat:@"%f",n]];
 }
 
+- (double)log_e{
+    return log(n);
+}
+
+- (double)log_10{
+    
+    return log10(n);
+}
+
 - (IBAction)pi:(id)sender {
-    n=M_PI;
+    n=[self pi];
     [[self display] setText:[ NSString stringWithFormat:@"%f",n]];
+}
+
+- (double)pi
+{
+    return M_PI;
 }
 
 - (IBAction)neipia:(id)sender {
-    n=M_E;
+    n=[self neipia];
     [[self display] setText:[ NSString stringWithFormat:@"%f",n]];
 }
 
+- (double)neipia
+{
+    return M_E;
+}
+
+
 - (IBAction)sqrt:(id)sender {
-    n=sqrt(n);
+    n=[self sqrt];
     [[self display] setText:[ NSString stringWithFormat:@"%f",n]];
 }
+- (int)sqrt
+{
+    return sqrt(n);
+}
+
 
 - (IBAction)plus:(id)sender {
     [self setState:plus];
@@ -172,25 +210,25 @@ double l=0;
         case plus:
             n=m+n;
             [[self display] setText:[ NSString stringWithFormat:@"%g",n]];
-            [self setState:ic];
+            [self setState:afterans];
             break;
             
         case hiku:
             n=m-n;
             [[self display] setText:[ NSString stringWithFormat:@"%g",n]];
-            [self setState:ic];
+            [self setState:afterans];
             break;
             
         case waru:
             n=m/n;
             [[self display] setText:[ NSString stringWithFormat:@"%g",n]];
-            [self setState:ic];
+            [self setState:afterans];
             break;
             
         case kakeru:
             n=m*n;
             [[self display] setText:[ NSString stringWithFormat:@"%g",n]];
-            [self setState:ic];
+            [self setState:afterans];
             break;
             
         default:
@@ -211,23 +249,27 @@ double l=0;
     if(n==0)
     {
         n=1;
+        if( [self state]== small)
+        {
+            p++;
+            m=n;
+            n=n/pow(10,p);
+            n=n+m;
+        }
     }
-    else if ([self state]==ic)
+    else if ([self state]==ic||[self state]==afterans)
     {
         n=1;
         
     }
+    
     else if( n != 0)
     {
         n=n*10+1;
     }
     
     
-    else
-    {
-        n=n*10+1;
-    }
-    
+       
     [[self display] setText:[ NSString stringWithFormat:@"%g",n]];
     
 }
@@ -241,9 +283,13 @@ double l=0;
     {
         n=n*10+2;
     }
-    else if([self state]==ic)
+    else if([self state]==afterans)
     {
         n=2;
+    }
+    else if( [self state]== small)
+    {
+        
     }
     
     else
@@ -265,7 +311,7 @@ double l=0;
     {
         n=n*10+3;
     }
-    else if ([self state]==ic)
+    else if ([self state]==afterans)
     {
         n=3;
     }
@@ -287,7 +333,7 @@ double l=0;
     {
         n=n*10+4;
     }
-    else if([self state]==ic)
+    else if([self state]==afterans)
     {
         n=4;
     }
@@ -309,7 +355,7 @@ double l=0;
     {
         n=n*10+5;
     }
-    else if([self state]==ic)
+    else if([self state]==afterans)
     {
         n=5;
     }
@@ -331,7 +377,7 @@ double l=0;
     {
         n=n*10+6;
     }
-    else if([self state]==ic)
+    else if([self state]==afterans)
     {
         n=6;
     }
@@ -353,7 +399,7 @@ double l=0;
     {
         n=n*10+7;
     }
-    else if([self state]==ic)
+    else if([self state]==afterans)
     {
         n=7;
     }
@@ -375,7 +421,7 @@ double l=0;
     {
         n=n*10+8;
     }
-    else if([self state]==ic)
+    else if([self state]==afterans)
     {
         n=8;
     }
@@ -396,7 +442,7 @@ double l=0;
     {
         n=n*10+9;
     }
-    else if([self state]==ic)
+    else if([self state]==afterans)
     {
         n=9;
     
@@ -420,7 +466,7 @@ double l=0;
     {
         n=n*10;
     }
-    else if([self state]==ic)
+    else if([self state]==afterans)
     {
         n=0;
     }
@@ -437,5 +483,6 @@ double l=0;
     [[self display] setText:@"0"];
     n=0;
     m=0;
+    p=0;
 }
 @end

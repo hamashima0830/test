@@ -10,21 +10,25 @@
 
 #import <math.h>
 
+#import "statemachine.h"
+
 @interface ViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *display;
 - (IBAction)plusminus:(id)sender;
-- (IBAction)log_e:(id)sender;
-- (IBAction)log_10:(id)sender;
-- (IBAction)pi:(id)sender;
+
+- (IBAction)small:(id)sender;
+
+
+
 - (IBAction)tan:(id)sender;
-- (IBAction)neipia:(id)sender;
-- (IBAction)sqrt:(id)sender;
+
+
 - (IBAction)m_out:(id)sender;
 - (IBAction)m_set:(id)sender;
 - (IBAction)waru:(id)sender;
 - (IBAction)kakeru:(id)sender;
 - (IBAction)hiku:(id)sender;
-- (IBAction)sin:(id)sender;
+
 - (IBAction)cos:(id)sender;
 - (IBAction)plus:(id)sender;
 - (IBAction)four:(id)sender;
@@ -42,13 +46,21 @@
 - (IBAction)acos:(id)sender;
 - (IBAction)atan:(id)sender;
 
--(int)log_e;
-- (int)plusminus;
 
-@property enum {plus,hiku,waru,kakeru,ic,ans} state;
+
+
+@property enum {plus,hiku,waru,kakeru,ic,ans,afterans,small} state;
 - (IBAction)ans:(id)sender;
 
-- (void)m_out;
+
+@property(readonly) statemachine *model;
+
+- (IBAction)log_e:(id)sender;
+- (IBAction)log_10:(id)sender;
+- (IBAction)neipia:(id)sender;
+- (IBAction)sqrt:(id)sender;
+- (IBAction)pi:(id)sender;
+- (IBAction)sin:(id)sender;
 
 
 @end
