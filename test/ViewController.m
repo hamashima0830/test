@@ -22,6 +22,7 @@
 {
     [super viewDidLoad];
     [self setState:ic];//ic = initial condition（初期状態）
+    [self setState_enzan:ic_enzan];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -31,10 +32,12 @@
     // Dispose of any resources that can be recreated.
 }
 
-double n=0;
-double m=0;
-double l=0;
-double p=0;
+//#synthesize model;
+
+double n;
+double m;
+double l;
+double p;
 
 //メモリの入力m_setと出力m_out
 
@@ -70,6 +73,11 @@ double p=0;
     m=(n/360)*2*M_PI;
     n=tan(m);
     [[self display] setText:[ NSString stringWithFormat:@"%f",n]];
+}
+- (double)tan
+{
+    m=(n/360)*2*M_PI;
+    return tan(m);
 }
 
 
@@ -113,7 +121,7 @@ double p=0;
 
 - (IBAction)small:(id)sender;
 {
-    [self setState:small];
+    _state=small;
     p++;
 }
 
@@ -166,23 +174,27 @@ double p=0;
     n=[self sqrt];
     [[self display] setText:[ NSString stringWithFormat:@"%f",n]];
 }
-- (int)sqrt
+- (double)sqrt
 {
     return sqrt(n);
 }
 
 
 - (IBAction)plus:(id)sender {
-    [self setState:plus];
+    [self setState_enzan:plus];
+    [self setState:ic];
     m=n;
     n=0;
-    [[self display] setText:[ NSString stringWithFormat:@"%d",0]];
+    NSLog(@"plus_n:%f",n);
+    NSLog(@"plus_m:%f",m);
+    //[[self display] setText:[ NSString stringWithFormat:@"%d",0]];
     
 }
 
 
 - (IBAction)waru:(id)sender {
-    [self setState:waru];
+    [self setState_enzan:waru];
+    [self setState:ic];
     m=n;
     n=0;
     
@@ -190,15 +202,17 @@ double p=0;
 
 - (IBAction)kakeru:(id)sender {
     [self setState:kakeru];
+    [self setState:ic];
     m=n;
     n=0;
 }
 
 - (IBAction)hiku:(id)sender {
-    [self setState:hiku];
+    [self setState_enzan:hiku];
+    [self setState:ic];
     m=n;
     n=0;
-    [[self display] setText:[ NSString stringWithFormat:@"%d",0]];
+    //[[self display] setText:[ NSString stringWithFormat:@"%d",0]];
 }
 
 
@@ -206,29 +220,36 @@ double p=0;
 
 - (IBAction)ans:(id)sender {
         
-    switch ([self state]) {
+    switch ([self state_enzan]) {
         case plus:
             n=m+n;
+            NSLog(@"plus_n:%f",n);
+            NSLog(@"plus_m:%f",m);
+            NSLog(@"plus");
             [[self display] setText:[ NSString stringWithFormat:@"%g",n]];
-            [self setState:afterans];
+            [self setState:ic];
+            [self setState_enzan:ic_enzan];
             break;
             
         case hiku:
             n=m-n;
             [[self display] setText:[ NSString stringWithFormat:@"%g",n]];
-            [self setState:afterans];
+            [self setState:ic];
+            [self setState_enzan:ic_enzan];
             break;
             
         case waru:
             n=m/n;
             [[self display] setText:[ NSString stringWithFormat:@"%g",n]];
-            [self setState:afterans];
+            [self setState:ic];
+            [self setState_enzan:ic_enzan];
             break;
             
         case kakeru:
             n=m*n;
             [[self display] setText:[ NSString stringWithFormat:@"%g",n]];
-            [self setState:afterans];
+            [self setState:ic];
+            [self setState_enzan:ic_enzan];
             break;
             
         default:
@@ -246,235 +267,58 @@ double p=0;
 
 
 - (IBAction)one:(id)sender {
-    if(n==0)
-    {
-        n=1;
-        if( [self state]== small)
-        {
-            p++;
-            m=n;
-            n=n/pow(10,p);
-            n=n+m;
-        }
-    }
-    else if ([self state]==ic||[self state]==afterans)
-    {
-        n=1;
-        
-    }
-    
-    else if( n != 0)
-    {
-        n=n*10+1;
-    }
-    
-    
-       
-    [[self display] setText:[ NSString stringWithFormat:@"%g",n]];
+      
+    [[self display] setText:[ NSString stringWithFormat:@"%g",[self calc:1]]];
     
 }
 
 - (IBAction)two:(id)sender {
-    if(n==0)
-    {
-        n=2;
-    }
-    else if ([self state]==ic && n != 0)
-    {
-        n=n*10+2;
-    }
-    else if([self state]==afterans)
-    {
-        n=2;
-    }
-    else if( [self state]== small)
-    {
-        
-    }
     
-    else
-    {
-        n=n*10+2;
-    }
-    
-    [[self display] setText:[ NSString stringWithFormat:@"%g",n]];
+    [[self display] setText:[ NSString stringWithFormat:@"%g",[self calc:2]]];
     
 }
 
 
 - (IBAction)three:(id)sender {
-    if(n==0)
-    {
-        n=3;
-    }
-    else if([self state]==ic && n!=0)
-    {
-        n=n*10+3;
-    }
-    else if ([self state]==afterans)
-    {
-        n=3;
-    }
     
-    else
-    {
-        n=n*10+3;
-    }
-    
-    [[self display] setText:[ NSString stringWithFormat:@"%g",n]];
+    [[self display] setText:[ NSString stringWithFormat:@"%g",[self calc:3]]];
 }
 
 - (IBAction)four:(id)sender {
-    if(n==0)
-    {
-        n=4;
-    }
-    else if([self state]==ic && n != 0)
-    {
-        n=n*10+4;
-    }
-    else if([self state]==afterans)
-    {
-        n=4;
-    }
     
-    else
-    {
-        n=n*10+4;
-    }
-    
-    [[self display] setText:[ NSString stringWithFormat:@"%g",n]];
+    [[self display] setText:[ NSString stringWithFormat:@"%g",[self calc:4]]];
 }
 
 - (IBAction)five:(id)sender {
-    if(n==0)
-    {
-        n=5;
-    }
-    else if([self state]==ic && n != 0)
-    {
-        n=n*10+5;
-    }
-    else if([self state]==afterans)
-    {
-        n=5;
-    }
     
-    else
-    {
-        n=n*10+5;
-    }
-    
-    [[self display] setText:[ NSString stringWithFormat:@"%g",n]];
+    [[self display] setText:[ NSString stringWithFormat:@"%g",[self calc:5]]];
 }
 
 - (IBAction)six:(id)sender {
-    if(n==0)
-    {
-        n=6;
-    }
-    else if([self state]==ic && n !=0)
-    {
-        n=n*10+6;
-    }
-    else if([self state]==afterans)
-    {
-        n=6;
-    }
-    
-    else
-    {
-        n=n*10+6;
-    }
-    
-    [[self display] setText:[ NSString stringWithFormat:@"%g",n]];
+   
+    [[self display] setText:[ NSString stringWithFormat:@"%g",[self calc:6]]];
 }
 
 - (IBAction)seven:(id)sender {
-    if(n==0)
-    {
-        n=7;
-    }
-    else if([self state]==ic && n != 0)
-    {
-        n=n*10+7;
-    }
-    else if([self state]==afterans)
-    {
-        n=7;
-    }
     
-    else
-    {
-        n=n*10+7;
-    }
-    
-    [[self display] setText:[ NSString stringWithFormat:@"%g",n]];
+    [[self display] setText:[ NSString stringWithFormat:@"%g",[self calc:7]]];
 }
 
 - (IBAction)eight:(id)sender {
-    if(n==0)
-    {
-        n=8;
-    }
-    else if([self state]==ic && n !=0)
-    {
-        n=n*10+8;
-    }
-    else if([self state]==afterans)
-    {
-        n=8;
-    }
-    else
-    {
-        n=n*10+8;
-    }
     
-    [[self display] setText:[ NSString stringWithFormat:@"%g",n]];
+    [[self display] setText:[ NSString stringWithFormat:@"%g",[self calc:8]]];
 }
 
 - (IBAction)nine:(id)sender {
-    if(n==0)
-    {
-        n=9;
-    }
-    else if([self state]==ic && n !=0)
-    {
-        n=n*10+9;
-    }
-    else if([self state]==afterans)
-    {
-        n=9;
-    
-    }
-    else
-    {
-        n=n*10+9;
-    }
-    
-    [[self display] setText:[ NSString stringWithFormat:@"%g",n]];
+   
+    [[self display] setText:[ NSString stringWithFormat:@"%g",[self calc:9]]];
 }
 
     
 
 - (IBAction)zero:(id)sender {
-    if(n==0)
-    {
-        n=0;
-    }
-    else if([self state]==ic && n!=0)
-    {
-        n=n*10;
-    }
-    else if([self state]==afterans)
-    {
-        n=0;
-    }
-    else
-    {
-        n=n*10;
-    }
-    [[self display] setText:[ NSString stringWithFormat:@"%g",n]];
+    
+    [[self display] setText:[ NSString stringWithFormat:@"%g",[self calc:0]]];
 
 }
 
@@ -485,4 +329,33 @@ double p=0;
     m=0;
     p=0;
 }
+double before;
+/*
+-(double)calc:(double)number{
+    
+    
+    switch ([self state]) {
+        case ic:
+            [self setState:work];
+            NSLog(@"ic");
+            break;
+            
+        case work:
+            NSLog(@"work");
+            number=before*10+number;
+            break;
+            
+            
+        default:
+            NSLog(@"default");
+            break;
+    }
+    before = number;
+    NSLog(@"number:%f",number);
+    [[self display] setText:[ NSString stringWithFormat:@"%g",number]];
+    n=number;
+    return number;
+    
+    NSLog(@"number:%f",n);
+}*/
 @end

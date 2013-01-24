@@ -20,7 +20,7 @@
 
 
 
-- (IBAction)tan:(id)sender;
+
 
 
 - (IBAction)m_out:(id)sender;
@@ -29,7 +29,6 @@
 - (IBAction)kakeru:(id)sender;
 - (IBAction)hiku:(id)sender;
 
-- (IBAction)cos:(id)sender;
 - (IBAction)plus:(id)sender;
 - (IBAction)four:(id)sender;
 - (IBAction)five:(id)sender;
@@ -49,7 +48,8 @@
 
 
 
-@property enum {plus,hiku,waru,kakeru,ic,ans,afterans,small} state;
+@property enum {plus,hiku,waru,kakeru,ic_enzan} state_enzan;
+@property enum {ic,ans,afterans,small,work} state;
 - (IBAction)ans:(id)sender;
 
 
@@ -61,6 +61,9 @@
 - (IBAction)sqrt:(id)sender;
 - (IBAction)pi:(id)sender;
 - (IBAction)sin:(id)sender;
+- (IBAction)cos:(id)sender;
+- (IBAction)tan:(id)sender;
 
+-(double)calc:(double)number;
 
 @end

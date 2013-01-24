@@ -17,6 +17,11 @@
 - (double)neipia:(ViewController*)controller;
 - (double)sqrt:(ViewController*)controller;
 - (double)pi:(ViewController*)controller;
-- (double)neipia:(ViewController*)controller;
 - (double)sin:(ViewController*)controller;
+- (double)cos:(ViewController*)controller;
+- (double)tan:(ViewController*)controller;
+
+@property enum {plus,hiku,waru,kakeru,ic_enzan} state_enzan;
+@property enum {ic,ans,afterans,small,work} state;
+
 @end

@@ -13,16 +13,16 @@
 
 //@synthesize state;
 
-double nn=0;
-double mm=0;
+double n;
+double m;
 
 - (double)log_e:(ViewController*)controller {
-    return log(nn);
+    return log(n);
 }
 
 - (double)log_10:(ViewController*)controller {
 
-    return log10(nn);
+    return log10(n);
 }
 
 - (double)neipia:(ViewController*)controller
@@ -32,7 +32,7 @@ double mm=0;
 
 - (double)sqrt:(ViewController*)controller
 {
-    return sqrt(nn);
+    return sqrt(n);
 }
 
 - (double)pi:(ViewController*)controller
@@ -40,15 +40,50 @@ double mm=0;
     return M_PI;
 }
 
-- (double)sin
+- (double)sin:(ViewController*)controller
 {
-    mm=(nn/360)*2*M_PI;
-    return sin(mm);
+    m=(n/360)*2*M_PI;
+    return sin(m);
 }
-- (double)cos
+- (double)cos:(ViewController*)controller
 {
-    mm=(nn/360)*2*M_PI;
-    return cos(mm);
+    m=(n/360)*2*M_PI;
+    return cos(m);
 }
+- (double)tan:(ViewController*)controller
+{
+    m=(n/360)*2*M_PI;
+    return tan(m);
+}
+
+double before = 0.0;
+-(double)calc:(double)number{
+    
+    
+    switch ([self state]) {
+        case ic:
+            [self setState:work];
+            NSLog(@"ic");
+            break;
+            
+        case work:
+            NSLog(@"work");
+            number=before*10+number;
+            break;
+            
+            
+        default:
+            NSLog(@"default");
+            break;
+    }
+    before = number;
+    NSLog(@"number:%f",number);
+    setText:[ NSString stringWithFormat:@"%g",number];
+    n=number;
+    return number;
+    
+    NSLog(@"number:%f",n);
+}
+
 
 @end

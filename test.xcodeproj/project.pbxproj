@@ -122,14 +122,14 @@
 		E97E34BB162D3723000AEA52 /* test */ = {
 			isa = PBXGroup;
 			children = (
-				E9EEF3BC16A7B60D00F99308 /* statemachine.h */,
 				E97E34C4162D3723000AEA52 /* AppDelegate.h */,
-				E9EEF3BD16A7B60D00F99308 /* statemachine.m */,
 				E97E34C5162D3723000AEA52 /* AppDelegate.m */,
 				E97E34CD162D3724000AEA52 /* MainStoryboard_iPhone.storyboard */,
 				E97E34D0162D3724000AEA52 /* MainStoryboard_iPad.storyboard */,
 				E97E34D3162D3724000AEA52 /* ViewController.h */,
 				E97E34D4162D3724000AEA52 /* ViewController.m */,
+				E9EEF3BC16A7B60D00F99308 /* statemachine.h */,
+				E9EEF3BD16A7B60D00F99308 /* statemachine.m */,
 				E97E34BC162D3723000AEA52 /* Supporting Files */,
 			);
 			path = test;
