@@ -65,5 +65,7 @@
 - (IBAction)tan:(id)sender;
 
 -(double)calc:(double)number;
+-(double)enzan:(double)n
+         aiueo:(double)m;
 
 @end

@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 @class ViewController;
-@interface statemachine : NSObject
+@interface statemachine : NSObject{
+
+}
 
 
 
@@ -23,5 +25,13 @@
 
 @property enum {plus,hiku,waru,kakeru,ic_enzan} state_enzan;
 @property enum {ic,ans,afterans,small,work} state;
+@property double number;
+@property double before;
+
+-(void)calc;
+-(double)enzan:(double)n
+         aiueo:(double)m;
+-(void)clear;
+
 
 @end

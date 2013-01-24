@@ -16,13 +16,14 @@
 
 @implementation ViewController
 
-//@synthesize statemachine;
+@synthesize model;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self setState:ic];//ic = initial condition（初期状態）
     [self setState_enzan:ic_enzan];
+    model = [[statemachine alloc]init];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -181,10 +182,13 @@ double p;
 
 
 - (IBAction)plus:(id)sender {
-    [self setState_enzan:plus];
+    NSLog(@"plus");
+    [model setState_enzan:plus];
     [self setState:ic];
-    m=n;
-    n=0;
+    m=model.number;
+    model.number = 0;
+    model.before = 0;
+    [model enzan:n aiueo:m];
     NSLog(@"plus_n:%f",n);
     NSLog(@"plus_m:%f",m);
     //[[self display] setText:[ NSString stringWithFormat:@"%d",0]];
@@ -193,25 +197,31 @@ double p;
 
 
 - (IBAction)waru:(id)sender {
-    [self setState_enzan:waru];
+    [model setState_enzan:waru];
     [self setState:ic];
-    m=n;
-    n=0;
+    m=model.number;
+    model.number = 0;
+    model.before = 0;
+    [model enzan:n aiueo:m];
     
 }
 
 - (IBAction)kakeru:(id)sender {
-    [self setState:kakeru];
+    [model setState_enzan:kakeru];
     [self setState:ic];
-    m=n;
-    n=0;
+    m=model.number;
+    model.number = 0;
+    model.before = 0;
+    [model enzan:n aiueo:m];
 }
 
 - (IBAction)hiku:(id)sender {
-    [self setState_enzan:hiku];
+    [model setState_enzan:hiku];
     [self setState:ic];
-    m=n;
-    n=0;
+    m=model.number;
+    model.number = 0;
+    model.before = 0;
+    [model enzan:n aiueo:m];
     //[[self display] setText:[ NSString stringWithFormat:@"%d",0]];
 }
 
@@ -219,115 +229,89 @@ double p;
 
 
 - (IBAction)ans:(id)sender {
-        
-    switch ([self state_enzan]) {
-        case plus:
-            n=m+n;
-            NSLog(@"plus_n:%f",n);
-            NSLog(@"plus_m:%f",m);
-            NSLog(@"plus");
-            [[self display] setText:[ NSString stringWithFormat:@"%g",n]];
-            [self setState:ic];
-            [self setState_enzan:ic_enzan];
-            break;
-            
-        case hiku:
-            n=m-n;
-            [[self display] setText:[ NSString stringWithFormat:@"%g",n]];
-            [self setState:ic];
-            [self setState_enzan:ic_enzan];
-            break;
-            
-        case waru:
-            n=m/n;
-            [[self display] setText:[ NSString stringWithFormat:@"%g",n]];
-            [self setState:ic];
-            [self setState_enzan:ic_enzan];
-            break;
-            
-        case kakeru:
-            n=m*n;
-            [[self display] setText:[ NSString stringWithFormat:@"%g",n]];
-            [self setState:ic];
-            [self setState_enzan:ic_enzan];
-            break;
-            
-        default:
-            [[self display] setText:[ NSString stringWithFormat:@"%g",n]];
-            break;
+    
+    
+    [[self display] setText:[ NSString stringWithFormat:@"%g",[model enzan:model.number aiueo:m]]];
+
+
     }
     
-    
-
-   
-    
-}
-
-
-
-
 - (IBAction)one:(id)sender {
-      
-    [[self display] setText:[ NSString stringWithFormat:@"%g",[self calc:1]]];
+    
+    model.number = 1;
+    [model calc];
+    [[self display] setText:[ NSString stringWithFormat:@"%g",model.number]];
+
     
 }
 
 - (IBAction)two:(id)sender {
     
-    [[self display] setText:[ NSString stringWithFormat:@"%g",[self calc:2]]];
-    
+    model.number = 2;
+    [model calc];
+    [[self display] setText:[ NSString stringWithFormat:@"%g",model.number]];
 }
 
 
 - (IBAction)three:(id)sender {
     
-    [[self display] setText:[ NSString stringWithFormat:@"%g",[self calc:3]]];
+    model.number = 3;
+    [model calc];
+    [[self display] setText:[ NSString stringWithFormat:@"%g",model.number]];
 }
 
 - (IBAction)four:(id)sender {
     
-    [[self display] setText:[ NSString stringWithFormat:@"%g",[self calc:4]]];
-}
+    model.number = 4;
+    [model calc];
+    [[self display] setText:[ NSString stringWithFormat:@"%g",model.number]];}
 
 - (IBAction)five:(id)sender {
     
-    [[self display] setText:[ NSString stringWithFormat:@"%g",[self calc:5]]];
-}
+    model.number = 5;
+    [model calc];
+    [[self display] setText:[ NSString stringWithFormat:@"%g",model.number]];}
 
 - (IBAction)six:(id)sender {
    
-    [[self display] setText:[ NSString stringWithFormat:@"%g",[self calc:6]]];
-}
+    model.number = 6;
+    [model calc];
+    [[self display] setText:[ NSString stringWithFormat:@"%g",model.number]];}
 
 - (IBAction)seven:(id)sender {
     
-    [[self display] setText:[ NSString stringWithFormat:@"%g",[self calc:7]]];
-}
+    model.number = 7;
+    [model calc];
+    [[self display] setText:[ NSString stringWithFormat:@"%g",model.number]];}
 
 - (IBAction)eight:(id)sender {
     
-    [[self display] setText:[ NSString stringWithFormat:@"%g",[self calc:8]]];
-}
+    model.number = 8;
+    [model calc];
+    [[self display] setText:[ NSString stringWithFormat:@"%g",model.number]];}
 
 - (IBAction)nine:(id)sender {
    
-    [[self display] setText:[ NSString stringWithFormat:@"%g",[self calc:9]]];
-}
+    model.number = 9;
+    [model calc];
+    [[self display] setText:[ NSString stringWithFormat:@"%g",model.number]];}
 
     
 
 - (IBAction)zero:(id)sender {
     
-    [[self display] setText:[ NSString stringWithFormat:@"%g",[self calc:0]]];
+ //   [[self display] setText:[ NSString stringWithFormat:@"%g",[model calc:0]]];
 
 }
 
 - (IBAction)clear:(id)sender {
+    [model clear];
     [self setState:ic];
     [[self display] setText:@"0"];
     n=0;
     m=0;
     p=0;
+    model.number =0;
 }
 double before;
 /*
@@ -358,4 +342,7 @@ double before;
     
     NSLog(@"number:%f",n);
 }*/
+
+
+
 @end

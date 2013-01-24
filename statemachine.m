@@ -7,15 +7,17 @@
 //
 
 #import "statemachine.h"
-#import "ViewController.h"
 
 @implementation statemachine
 
-//@synthesize state;
+@synthesize state;
+@synthesize state_enzan;
+@synthesize number;
+@synthesize before;
 
 double n;
 double m;
-
+/*
 - (double)log_e:(ViewController*)controller {
     return log(n);
 }
@@ -55,11 +57,44 @@ double m;
     m=(n/360)*2*M_PI;
     return tan(m);
 }
-
+*/
+    
+-(double)enzan:(double)n
+         aiueo:(double)m
+{
+    
+    switch ([self state_enzan]) {
+        case plus:
+            n=m+n;
+            break;
+            
+        case hiku:
+            n=m-n;
+            break;
+            
+        case waru:
+            n=m/n;
+            break;
+            
+        case kakeru:
+            n=m*n;
+            break;
+        default:
+            break;
+            
+            [self setState:ic];
+            [self setState_enzan:ic_enzan];
+    }
+    
+    
+    
+    return n;
+    
+}
+    
 double before = 0.0;
--(double)calc:(double)number{
-    
-    
+-(void)calc{
+    NSLog(@"state");
     switch ([self state]) {
         case ic:
             [self setState:work];
@@ -77,13 +112,20 @@ double before = 0.0;
             break;
     }
     before = number;
-    NSLog(@"number:%f",number);
-    setText:[ NSString stringWithFormat:@"%g",number];
+  //  setText:[ NSString stringWithFormat:@"%g",number];
     n=number;
-    return number;
+  //  return number;
+    
     
     NSLog(@"number:%f",n);
 }
 
+-(void)clear{
+        NSLog(@"clear");
+    n=0;
+    m=0;
+    number = 0;
+    before = 0;
+}
 
 @end

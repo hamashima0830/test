@@ -201,7 +201,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="ans:" destination="2" eventType="touchUpInside" id="XBW-IO-FQA"/>
+                                    <action selector="ans:" destination="2" eventType="touchUpInside" id="gvs-5M-HnW"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7O3-iS-gzU">
@@ -605,48 +605,6 @@
             </objects>
         </scene>
     </scenes>
-    <classes>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="acos:"/>
-                <relationship kind="action" name="ans:"/>
-                <relationship kind="action" name="asin:"/>
-                <relationship kind="action" name="atan:"/>
-                <relationship kind="action" name="clear:"/>
-                <relationship kind="action" name="cos:"/>
-                <relationship kind="action" name="eight:"/>
-                <relationship kind="action" name="five:"/>
-                <relationship kind="action" name="four:"/>
-                <relationship kind="action" name="hiku:"/>
-                <relationship kind="action" name="kakeru:"/>
-                <relationship kind="action" name="log_10:"/>
-                <relationship kind="action" name="log_e:"/>
-                <relationship kind="action" name="m_out:"/>
-                <relationship kind="action" name="m_set:"/>
-                <relationship kind="action" name="neipia:"/>
-                <relationship kind="action" name="nine:"/>
-                <relationship kind="action" name="one:"/>
-                <relationship kind="action" name="pi:"/>
-                <relationship kind="action" name="plus:"/>
-                <relationship kind="action" name="plusminus:"/>
-                <relationship kind="action" name="seven:"/>
-                <relationship kind="action" name="sin:"/>
-                <relationship kind="action" name="six:"/>
-                <relationship kind="action" name="small:"/>
-                <relationship kind="action" name="sqrt:"/>
-                <relationship kind="action" name="tan:"/>
-                <relationship kind="action" name="three:"/>
-                <relationship kind="action" name="two:"/>
-                <relationship kind="action" name="waru:"/>
-                <relationship kind="action" name="zero:"/>
-                <relationship kind="outlet" name="display" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
