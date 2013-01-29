@@ -71,41 +71,29 @@ double p;
 
 
 - (IBAction)tan:(id)sender {
-    m=(n/360)*2*M_PI;
-    n=tan(m);
-    [[self display] setText:[ NSString stringWithFormat:@"%f",n]];
+    m=model.number;
+    [model setState_enzan:sin_state];
+    [self setState:ic];
+    [model enzan:n aiueo:m];
 }
-- (double)tan
-{
-    m=(n/360)*2*M_PI;
-    return tan(m);
-}
+
 
 
 - (IBAction)cos:(id)sender {
     
-    n=[self cos];
-    [[self display] setText:[ NSString stringWithFormat:@"%f",n]];
-}
-- (double)cos
-{
-    m=(n/360)*2*M_PI;
-    return cos(m);
+    m=model.number;
+    [model setState_enzan:sin_state];
+    [self setState:ic];
+    [model enzan:n aiueo:m];
 }
 
 
 - (IBAction)sin:(id)sender {
-    
-    
-    n=[self sin];
-    [[self display] setText:[ NSString stringWithFormat:@"%f",n]];
-    
-}
 
-- (double)sin
-{
-    m=(n/360)*2*M_PI;
-    return sin(m);
+    m=model.number;
+    [model setState_enzan:sin_state];
+    [self setState:ic];
+    [model enzan:n aiueo:m];
 }
 
 
@@ -130,26 +118,24 @@ double p;
 
 
 - (IBAction)log_e:(id)sender {
-    n=[self log_e];
-    [[self display] setText:[ NSString stringWithFormat:@"%f",n]];
+    m=model.number;
+    [model setState_enzan:log_10_state];
+    [self setState:ic];
+    [model enzan:n aiueo:m];
 }
 
 
 
 - (IBAction)log_10:(id)sender {
-    n=[self log_10];
-    [[self display] setText:[ NSString stringWithFormat:@"%f",n]];
+    m=model.number;
+    [model setState_enzan:log_10_state];
+    [self setState:ic];
+    [model enzan:n aiueo:m];
 }
 
-- (double)log_e{
-    return log(n);
-}
 
-- (double)log_10{
-    
-    return log10(n);
-}
 
+//neipiaとpiはあえて分離させずに残しています。
 - (IBAction)pi:(id)sender {
     n=[self pi];
     [[self display] setText:[ NSString stringWithFormat:@"%f",n]];
@@ -171,14 +157,14 @@ double p;
 }
 
 
-- (IBAction)sqrt:(id)sender {
-    n=[self sqrt];
-    [[self display] setText:[ NSString stringWithFormat:@"%f",n]];
+- (IBAction)sqrt:(id)sender {//平方根のコントローラ
+    m=model.number;
+    [model setState_enzan:sqrt_state];
+    [self setState:ic];
+    [model enzan:n aiueo:m];
+    
 }
-- (double)sqrt
-{
-    return sqrt(n);
-}
+
 
 
 - (IBAction)plus:(id)sender {//足し算のコントローラ
@@ -191,6 +177,7 @@ double p;
     [model enzan:n aiueo:m];
     NSLog(@"plus_n:%f",n);
     NSLog(@"plus_m:%f",m);
+    [[self display] setText:@"0"];
     //[[self display] setText:[ NSString stringWithFormat:@"%d",0]];
     
 }
@@ -203,6 +190,7 @@ double p;
     model.number = 0;
     model.before = 0;
     [model enzan:n aiueo:m];
+    [[self display] setText:@"0"];
     
 }
 
@@ -213,6 +201,7 @@ double p;
     model.number = 0;
     model.before = 0;
     [model enzan:n aiueo:m];
+    [[self display] setText:@"0"];
 }
 
 - (IBAction)hiku:(id)sender {//引き算のコントローラ
@@ -222,15 +211,16 @@ double p;
     model.number = 0;
     model.before = 0;
     [model enzan:n aiueo:m];
+    [[self display] setText:@"0"];
     
 }
 
 
 
 
-- (IBAction)ans:(id)sender {
+- (IBAction)ans:(id)sender {//回答のコントローラ。何か演算ボタンを押してansボタンを入力するとその演算結果が出るようにしてある。
     
-    
+    NSLog(@"ans_n:%f",n);
     [[self display] setText:[ NSString stringWithFormat:@"%g",[model enzan:model.number aiueo:m]]];
 
 
@@ -295,14 +285,14 @@ double p;
     model.number = 9;
     [model calc];
     [[self display] setText:[ NSString stringWithFormat:@"%g",model.number]];}
-
+     
     
 
 - (IBAction)zero:(id)sender {
     
- //   [[self display] setText:[ NSString stringWithFormat:@"%g",[model calc:0]]];
-
-}
+    model.number = 0;
+    [model calc];
+    [[self display] setText:[ NSString stringWithFormat:@"%g",model.number]];}
 
 - (IBAction)clear:(id)sender {
     [model clear];

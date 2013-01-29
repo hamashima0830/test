@@ -32,10 +32,7 @@ double m;
     return M_E;
 }
 
-- (double)sqrt:(ViewController*)controller
-{
-    return sqrt(n);
-}
+
 
 - (double)pi:(ViewController*)controller
 {
@@ -58,7 +55,8 @@ double m;
     return tan(m);
 }
 */
-    
+
+
 -(double)enzan:(double)n
          aiueo:(double)m
 {
@@ -79,6 +77,34 @@ double m;
         case kakeru:
             n=m*n;
             break;
+            
+        case sqrt_state:
+            n=sqrt(m);
+            break;
+            
+        case log_10_state:
+            n=log10(m);
+            break;
+            
+        case log_e_state:
+            n=log(m);
+            break;
+            
+        case sin_state:
+            n=(m/360)*2*M_PI;
+            n=sin(n);
+            break;
+            
+        case cos_state:
+            n=(m/360)*2*M_PI;
+            n=cos(n);
+            break;
+            
+        case tan_state:
+            n=(m/360)*2*M_PI;
+            n=tan(n);
+            break;
+            
         default:
             break;
             
