@@ -181,7 +181,7 @@ double p;
 }
 
 
-- (IBAction)plus:(id)sender {
+- (IBAction)plus:(id)sender {//足し算のコントローラ
     NSLog(@"plus");
     [model setState_enzan:plus];
     [self setState:ic];
@@ -196,7 +196,7 @@ double p;
 }
 
 
-- (IBAction)waru:(id)sender {
+- (IBAction)waru:(id)sender {//割り算のコントローラ
     [model setState_enzan:waru];
     [self setState:ic];
     m=model.number;
@@ -206,7 +206,7 @@ double p;
     
 }
 
-- (IBAction)kakeru:(id)sender {
+- (IBAction)kakeru:(id)sender {//かけ算のコントローラ
     [model setState_enzan:kakeru];
     [self setState:ic];
     m=model.number;
@@ -215,14 +215,14 @@ double p;
     [model enzan:n aiueo:m];
 }
 
-- (IBAction)hiku:(id)sender {
+- (IBAction)hiku:(id)sender {//引き算のコントローラ
     [model setState_enzan:hiku];
     [self setState:ic];
     m=model.number;
     model.number = 0;
     model.before = 0;
     [model enzan:n aiueo:m];
-    //[[self display] setText:[ NSString stringWithFormat:@"%d",0]];
+    
 }
 
 
