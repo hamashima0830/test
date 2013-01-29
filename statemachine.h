@@ -14,16 +14,14 @@
 
 
 
-- (double)log_e:(ViewController*)controller;
-- (double)log_10:(ViewController*)controller;
 - (double)neipia:(ViewController*)controller;
 - (double)pi:(ViewController*)controller;
-- (double)sin:(ViewController*)controller;
-- (double)cos:(ViewController*)controller;
-- (double)tan:(ViewController*)controller;
 
-@property enum {plus,hiku,waru,kakeru,ic_enzan,sqrt_state,log_10_state,log_e_state,cos_state,sin_state,tan_state} state_enzan;
-@property enum {ic,ans,afterans,small,work} state;
+
+@property enum {plus,hiku,waru,kakeru,ic_enzan,sqrt_state,log_10_state,log_e_state,cos_state,sin_state,tan_state} state_enzan;//演算状態を表す状態変数
+@property enum {ic,ans,afterans,small,work} state;//状態をあらわす状態変数
+@property enum {small_point,normal} point;//小寸点にかかわる状態変数
+
 @property double number;
 @property double before;
 

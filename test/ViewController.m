@@ -72,7 +72,7 @@ double p;
 
 - (IBAction)tan:(id)sender {
     m=model.number;
-    [model setState_enzan:sin_state];
+    [model setState_enzan:tan_state];
     [self setState:ic];
     [model enzan:n aiueo:m];
 }
@@ -82,7 +82,7 @@ double p;
 - (IBAction)cos:(id)sender {
     
     m=model.number;
-    [model setState_enzan:sin_state];
+    [model setState_enzan:cos_state];
     [self setState:ic];
     [model enzan:n aiueo:m];
 }
@@ -110,8 +110,13 @@ double p;
 
 - (IBAction)small:(id)sender;
 {
-    _state=small;
-    p++;
+    [model setPoint:small];
+    [self setState:ic];
+    m=model.number;
+    model.number = 0;
+    model.before = 0;
+    [model enzan:n aiueo:m];
+     p++;
 }
 
 

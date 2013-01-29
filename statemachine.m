@@ -14,47 +14,12 @@
 @synthesize state_enzan;
 @synthesize number;
 @synthesize before;
+@synthesize point;
 
 double n;
 double m;
-/*
-- (double)log_e:(ViewController*)controller {
-    return log(n);
-}
+double p;
 
-- (double)log_10:(ViewController*)controller {
-
-    return log10(n);
-}
-
-- (double)neipia:(ViewController*)controller
-{
-    return M_E;
-}
-
-
-
-- (double)pi:(ViewController*)controller
-{
-    return M_PI;
-}
-
-- (double)sin:(ViewController*)controller
-{
-    m=(n/360)*2*M_PI;
-    return sin(m);
-}
-- (double)cos:(ViewController*)controller
-{
-    m=(n/360)*2*M_PI;
-    return cos(m);
-}
-- (double)tan:(ViewController*)controller
-{
-    m=(n/360)*2*M_PI;
-    return tan(m);
-}
-*/
 
 
 -(double)enzan:(double)n
@@ -117,8 +82,11 @@ double m;
     return n;
     
 }
-    
+
+
+
 double before = 0.0;
+
 -(void)calc{
     NSLog(@"state");
     switch ([self state]) {
@@ -131,7 +99,7 @@ double before = 0.0;
             NSLog(@"work");
             number=before*10+number;
             break;
-            
+        
             
         default:
             NSLog(@"default");

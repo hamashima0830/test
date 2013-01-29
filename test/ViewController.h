@@ -50,6 +50,8 @@
 
 @property enum {plus,hiku,waru,kakeru,ic_enzan} state_enzan;
 @property enum {ic,ans,afterans,small,work} state;
+@property enum {small_point,normal} point;//小寸点にかかわる状態変数
+
 - (IBAction)ans:(id)sender;
 
 
