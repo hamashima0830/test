@@ -23,6 +23,7 @@
     [super viewDidLoad];
     [self setState:ic];//ic = initial condition（初期状態）
     [self setState_enzan:ic_enzan];
+    //[self setPoint:normal];
     model = [[statemachine alloc]init];
 	// Do any additional setup after loading the view, typically from a nib.
 }
@@ -35,10 +36,10 @@
 
 //#synthesize model;
 
-double n;
-double m;
-double l;
-double p;
+double n=0;
+double m=0;
+double l=0;
+double p=0;
 
 //メモリの入力m_setと出力m_out
 
@@ -75,6 +76,7 @@ double p;
     [model setState_enzan:tan_state];
     [self setState:ic];
     [model enzan:n aiueo:m];
+    [[self display] setText:[ NSString stringWithFormat:@"%g",[model enzan:model.number aiueo:m]]];
 }
 
 
@@ -85,6 +87,7 @@ double p;
     [model setState_enzan:cos_state];
     [self setState:ic];
     [model enzan:n aiueo:m];
+    [[self display] setText:[ NSString stringWithFormat:@"%g",[model enzan:model.number aiueo:m]]];
 }
 
 
@@ -94,29 +97,29 @@ double p;
     [model setState_enzan:sin_state];
     [self setState:ic];
     [model enzan:n aiueo:m];
+    [[self display] setText:[ NSString stringWithFormat:@"%g",[model enzan:model.number aiueo:m]]];
 }
 
 
-- (double)plusminus
-{
-    return 0-n;
-}
 
 
 - (IBAction)plusminus:(id)sender {
-    n=[self plusminus];
-    [[self display] setText:[ NSString stringWithFormat:@"%g",n]];
+    m=model.number;
+    [model setState_enzan:plus_minus];
+    [model enzan:n aiueo:m];
+    [[self display] setText:[ NSString stringWithFormat:@"%g",[model enzan:model.number aiueo:m]]];
 }
 
-- (IBAction)small:(id)sender;
+- (IBAction)small:(id)sender;//小数点表示に切り替えるボタン//
 {
-    [model setPoint:small];
-    [self setState:ic];
+    //[self setPoint:small];
+    [model setState:point];
+    p=1;
     m=model.number;
     model.number = 0;
     model.before = 0;
     [model enzan:n aiueo:m];
-     p++;
+    
 }
 
 
@@ -124,9 +127,11 @@ double p;
 
 - (IBAction)log_e:(id)sender {
     m=model.number;
-    [model setState_enzan:log_10_state];
+    [model setState_enzan:log_e_state];
     [self setState:ic];
     [model enzan:n aiueo:m];
+    
+    [[self display] setText:[ NSString stringWithFormat:@"%g",[model enzan:model.number aiueo:m]]];
 }
 
 
@@ -136,6 +141,8 @@ double p;
     [model setState_enzan:log_10_state];
     [self setState:ic];
     [model enzan:n aiueo:m];
+    
+    [[self display] setText:[ NSString stringWithFormat:@"%g",[model enzan:model.number aiueo:m]]];
 }
 
 
@@ -167,7 +174,7 @@ double p;
     [model setState_enzan:sqrt_state];
     [self setState:ic];
     [model enzan:n aiueo:m];
-    
+    [[self display] setText:[ NSString stringWithFormat:@"%g",[model enzan:model.number aiueo:m]]];
 }
 
 
@@ -233,11 +240,10 @@ double p;
     
 - (IBAction)one:(id)sender {
     
+
     model.number = 1;
     [model calc];
     [[self display] setText:[ NSString stringWithFormat:@"%g",model.number]];
-
-    
 }
 
 - (IBAction)two:(id)sender {
@@ -302,6 +308,8 @@ double p;
 - (IBAction)clear:(id)sender {
     [model clear];
     [self setState:ic];
+    [self setState_enzan:ic_enzan];
+    //[self setPoint:normal];
     [[self display] setText:@"0"];
     n=0;
     m=0;

@@ -7,6 +7,7 @@
 //
 
 #import "testTests.h"
+#import "ViewController.h"
 
 @implementation testTests
 
@@ -22,6 +23,11 @@
     // Tear-down code here.
     
     [super tearDown];
+}
+
+- (void)test1
+{
+    
 }
 
 - (void)testExample

@@ -25,22 +25,25 @@
 
 - (IBAction)m_out:(id)sender;
 - (IBAction)m_set:(id)sender;
+
 - (IBAction)waru:(id)sender;
 - (IBAction)kakeru:(id)sender;
 - (IBAction)hiku:(id)sender;
-
 - (IBAction)plus:(id)sender;
-- (IBAction)four:(id)sender;
-- (IBAction)five:(id)sender;
-- (IBAction)six:(id)sender;
-- (IBAction)seven:(id)sender;
-- (IBAction)eight:(id)sender;
+
 - (IBAction)nine:(id)sender;
+- (IBAction)eight:(id)sender;
+- (IBAction)seven:(id)sender;
+- (IBAction)six:(id)sender;
+- (IBAction)five:(id)sender;
+- (IBAction)four:(id)sender;
+- (IBAction)three:(id)sender;
 - (IBAction)two:(id)sender;
 - (IBAction)one:(id)sender;
 - (IBAction)zero:(id)sender;
+
 - (IBAction)clear:(id)sender;
-- (IBAction)three:(id)sender;
+
 - (IBAction)asin:(id)sender;
 - (IBAction)acos:(id)sender;
 - (IBAction)atan:(id)sender;
@@ -49,8 +52,8 @@
 
 
 @property enum {plus,hiku,waru,kakeru,ic_enzan} state_enzan;
-@property enum {ic,ans,afterans,small,work} state;
-@property enum {small_point,normal} point;//小寸点にかかわる状態変数
+@property enum {ic,ans,afterans,work,point} state;
+//@property enum {small,normal} point;//小寸点にかかわる状態変数
 
 - (IBAction)ans:(id)sender;
 

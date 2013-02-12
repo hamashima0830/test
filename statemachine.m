@@ -14,7 +14,7 @@
 @synthesize state_enzan;
 @synthesize number;
 @synthesize before;
-@synthesize point;
+//@synthesize point;
 
 double n;
 double m;
@@ -41,6 +41,10 @@ double p;
             
         case kakeru:
             n=m*n;
+            break;
+        
+        case plus_minus:
+            n=0-m;
             break;
             
         case sqrt_state:
@@ -92,21 +96,29 @@ double before = 0.0;
     switch ([self state]) {
         case ic:
             [self setState:work];
-            NSLog(@"ic");
+             NSLog(@"ic");
             break;
             
         case work:
             NSLog(@"work");
             number=before*10+number;
             break;
-        
+            
+        case point:
+            NSLog(@"point");
+            p++;
+            number= m + number/pow(10,p );
+            m=number;
+            NSLog(@"ans_m_point:%f",m);
+            break;
+
             
         default:
             NSLog(@"default");
             break;
     }
     before = number;
-  //  setText:[ NSString stringWithFormat:@"%g",number];
+    //setText:[ NSString stringWithFormat:@"%g",n];
     n=number;
   //  return number;
     
